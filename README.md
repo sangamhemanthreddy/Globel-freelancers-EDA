@@ -28,6 +28,17 @@ hˋourly_rate (USD) )ˋfor active vs. inactive freelancers provides insight int
 * High-Quality Segment (Rating ≥4): Identified the languages and countries that produce the largest pool of highly-rated talent, crucial for targeting recruitment or business development efforts.
 
 * Satisfaction Hotspots: Calculation of the percentage of freelancers with client_satisfaction≥4.0 per country highlights regions with strong quality assurance.
+# ⚙️ Core Practice Techniques
+The project exercises utilized several intermediate MySQL features to demonstrate robust data manipulation skills:
+
+Technique	Purpose
+Conditional Aggregation	Used SUM(CASE WHEN ... THEN 1 ELSE 0 END) to calculate percentages and count subsets (e.g., active males, satisfied clients) within GROUP BY clauses.
+
+Subqueries	Used to filter data against overall averages (e.g., finding freelancers with satisfaction above the global mean).
+
+CTEs (Common Table Expressions)	Used to structure complex queries, particularly in multi-step calculations like finding the overall most common language among highly-rated speakers.
+
+Data Segmentation	Used the CASE statement to categorize freelancers into experience levels (Beginner, Intermediate, Expert).
 
 
 
