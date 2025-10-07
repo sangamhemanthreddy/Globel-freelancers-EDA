@@ -12,6 +12,7 @@ WITH CTE  AS
 FROM CTE
 WHERE rate_percentile >= 0.8
 ORDER BY age ASC
-LIMIT 1 ; ```
-<img width="450" height="122" alt="image" src="https://github.com/user-attachments/assets/0b8df81d-17e0-4e1a-976e-2f3ed107ff2f" />
+LIMIT 1 ;
+```
+<img width="450" height="122" alt="image" src="https://github.com/user-attachments/assets/b08ca726-5712-4b0f-b5a6-2c3e8480eb60" />
 
