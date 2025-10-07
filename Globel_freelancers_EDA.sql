@@ -180,6 +180,13 @@ SELECT'Experience' AS Metric,
 FROM freelancers_data ;
 
 
+-- output --
+--  Metric , Non_Null_Count,  Min_Age,     Max_Age,    Avg_Age,    StdDev_Age
+-- Age   	    922	          20	        60	       40.582       11.964
+-- Experience	922	   	 	   0            41         11.483        9.752
+
+
+
  -- tranfering data into new table  , cleaned data  --
 CREATE TABLE  Freelancers_data
 like  global_freelancers_raw ; 
@@ -202,8 +209,14 @@ SELECT COUNT(freelancer_ID) TOTAL_freelancers , country
 FROM  freelancers_data 
 GROUP BY country 
 ORDER BY TOTAL_freelancers desc 
-LIMIT 10 
+LIMIT 3 
 ;
+
+-- TOTAL_freelancers ,    country
+--    63	            South Korea
+--    63          	    Canada
+--    51             	Australia
+ 
 
  /* 1.HOW MANY freelancer'S ARE THEIR BY COUNTRY / FIND WHICH COUNTRY HAS MORE FREELANCER'S --
  
@@ -271,6 +284,7 @@ SELECT  *
 FROM 
 freelancers_data 
 WHERE is_active IN('YES') AND rating = 5 ;
+
 
 -- 3.Find the names and primary skills of all freelancers whose hourly rate is between 40 and 60 USD (inclusive).
 
