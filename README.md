@@ -13,4 +13,5 @@ FROM CTE
 WHERE rate_percentile >= 0.8
 ORDER BY age ASC
 LIMIT 1 ; ```
-"C:\Users\heman\OneDrive\图片\Screenshots\Screenshot 2025-10-07 093600.png"
+<img width="450" height="122" alt="image" src="https://github.com/user-attachments/assets/0b8df81d-17e0-4e1a-976e-2f3ed107ff2f" />
+
