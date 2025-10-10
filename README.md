@@ -60,4 +60,3 @@ SELECT'Experience' AS Metric,
    ROUND( STDDEV(years_of_experience),3)
 FROM freelancers_data ; sql```
 
-<img width="792" height="127" alt="image" src="https://github.com/user-attachments/assets/1d5e893d-6d09-4fc3-a345-74fdc37e4fa4" />
