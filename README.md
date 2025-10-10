@@ -58,9 +58,6 @@ SELECT'Experience' AS Metric,
     MAX(years_of_experience),
   ROUND( AVG(years_of_experience) ,3),
    ROUND( STDDEV(years_of_experience),3)
-FROM freelancers_data ; 
+FROM freelancers_data ; sql```
 
 <img width="792" height="127" alt="image" src="https://github.com/user-attachments/assets/1d5e893d-6d09-4fc3-a345-74fdc37e4fa4" />
-
-
-```sql
