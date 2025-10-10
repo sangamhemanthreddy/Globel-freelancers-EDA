@@ -42,7 +42,25 @@ Data Segmentation	Used the CASE statement to categorize freelancers into experie
 
 
 
+ -- 1. FINDING MIN,MAX,AVG OF  AGE , STDDEV AGE    AND EXPIREICES AS WELL --
+```sql  
+SELECT 'Age' AS Metric, 
+ COUNT(age) AS Non_Null_Count,
+    MIN(age) AS Min_Age,
+    MAX(age) AS Max_Age, 
+   ROUND( AVG(age),3) AS Avg_Age, 
+   ROUND( STDDEV(age) ,3)AS StdDev_Age
+FROM freelancers_data
+UNION ALL
+SELECT'Experience' AS Metric,
+    COUNT(years_of_experience),
+    MIN(years_of_experience),
+    MAX(years_of_experience),
+  ROUND( AVG(years_of_experience) ,3),
+   ROUND( STDDEV(years_of_experience),3)
+FROM freelancers_data ; 
+
+<img width="792" height="127" alt="image" src="https://github.com/user-attachments/assets/1d5e893d-6d09-4fc3-a345-74fdc37e4fa4" />
 
 
-
-
+```sql
