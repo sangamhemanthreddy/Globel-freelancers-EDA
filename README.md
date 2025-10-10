@@ -42,7 +42,7 @@ Data Segmentation	Used the CASE statement to categorize freelancers into experie
 
 
 
- -- 1. FINDING MIN,MAX,AVG OF  AGE , STDDEV AGE    AND EXPIREICES AS WELL --
+ 1. FINDING MIN,MAX,AVG OF  AGE , STDDEV AGE    AND EXPIREICES AS WELL --
 ```sql  
 SELECT 'Age' AS Metric, 
  COUNT(age) AS Non_Null_Count,
@@ -58,5 +58,71 @@ SELECT'Experience' AS Metric,
     MAX(years_of_experience),
   ROUND( AVG(years_of_experience) ,3),
    ROUND( STDDEV(years_of_experience),3)
-FROM freelancers_data ; sql```
+FROM freelancers_data ;
+ ```
 
+------------------------------------------------------------------------------
+2. Finding Top Skills and Their Average Rates
+
+```sql
+SELECT
+ primary_skill ,
+  COUNT(primary_skill) AS Skill_Count,
+  ROUND(AVG( `hourly_rate (USD)` ), 2) AS Avg_Hourly_Rate
+FROM
+  freelancers_data
+GROUP BY
+ primary_skill
+ORDER BY
+  Skill_Count DESC ;
+```
+This query identifies the most popular skills among freelancers and calculates the average rate associated with each skill.
+primary_skill	Skill_Count	Avg_Hourly_Rate
+
+------------------------------------------------------------------------------
+ 3.List the name of the youngest freelancer (lowest age) who is also in the top 20% of the highest earners (based on hourly rate).
+```sql
+WITH CTE  AS 
+( SELECT name, age, `hourly_rate (USD)`,
+  PERCENT_RANK() OVER (ORDER BY `hourly_rate (USD)`) AS rate_percentile
+   FROM freelancers_data
+ )
+  SELECT name, age, `hourly_rate (USD)`
+FROM CTE
+WHERE rate_percentile >= 0.8
+ORDER BY age ASC
+LIMIT 5 ;
+```
+------------------------------------------------------------------------------ 
+4 .Show the count of freelancers categorized by both gender and is_active status (Active Count and Inactive Count per Gender).
+```sql
+SELECT COUNT(*) AS numoffreelancers , gender , is_active
+FROM freelancers_data 
+GROUP BY gender , is_active 
+ORDER BY  numoffreelancers DESC ;
+
+-- out put 
+n     g       is active or not
+225	 Male      	No
+209	 Female 	   Yes
+203 	Female 	   No
+202 	Male 	     Yes
+49 	Female    	Unknown
+34	 Male 	    Unknown
+```
+------------------------------------------------------------------------------
+5 .Identify the language that is spoken by the highest number of freelancers who also have a rating of 4 or above.
+```sql
+WITH CTE AS ( SELECT `language` , COUNT(`language`) AS Numof_speakers  , rating 
+  FROM freelancers_data 
+  WHERE rating  >= 4 AND `language` IS NOT NULL 
+  GROUP BY `language` ,  rating 
+  )
+  SELECT  `language` , SUM(Numof_speakers) AS Total_numof_speakers
+  FROM CTE 
+  GROUP BY `language` 
+  ORDER BY  SUM(Numof_speakers)  DESC 
+  LIMIT 3  ;
+```
+from this query , 65 freelancers can speak english  , Spanish	29 ,
+21 freelancers can speak Korean	 and it also cosiders the rating above 4 ..
