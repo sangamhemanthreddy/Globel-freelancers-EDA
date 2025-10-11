@@ -125,4 +125,4 @@ WITH CTE AS ( SELECT `language` , COUNT(`language`) AS Numof_speakers  , rating
   LIMIT 3  ;
 ```
 from this query , 65 freelancers can speak english  , Spanish	29 ,
-21 freelancers can speak Korean	 and it also cosiders the rating above 4 ..
+21 freelancers can speak Korean	 and it also considers the rating above 4 ..
